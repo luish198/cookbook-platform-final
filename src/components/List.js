@@ -1,7 +1,8 @@
 import React from 'react';
 //import clsx from 'clsx';
 import { Panel, PanelGroup, Nav, Icon, Row, Container, Content } from 'rsuite';
-import { Divider } from 'rsuite';
+import { Divider, ButtonToolbar,IconButton } from 'rsuite';
+import { useHistory } from "react-router-dom";
 
 import { FlexboxGrid, Col } from 'rsuite';
 import './list.css';
@@ -9,6 +10,8 @@ import './list.css';
 
 
 export default function List({ recipes }) {
+
+    const history = useHistory();
 
     console.log("result in list")
     console.log(recipes)
@@ -26,6 +29,16 @@ export default function List({ recipes }) {
     const isOdd = (num) => {
         const resultluis = num % 2;
         return resultluis;
+    }
+
+    const handleClick = (resid)=>{
+
+        console.log(resid)
+        history.push("/recipe/" + resid);
+
+        
+
+
     }
 
 
@@ -54,7 +67,15 @@ export default function List({ recipes }) {
                                     <Panel shaded bordered bodyFill style={{ display: 'inline-block', width: 240 }}>
 
                                         <img src={result.picture} alt="Recipe img missing" height="240" />
-                                        <Panel header={result.title} >{/* <p><small>{result.description}</small></p>*/}</Panel>
+                                        <Panel header={result.title} >
+                                            {/* <p><small>{result.id}</small></p> */}
+                                            <ButtonToolbar>
+                                                {/* <IconButton icon={<Icon icon="spoon" />} active onClick={handleClick} >See more</IconButton> */}
+                                                <IconButton icon={<Icon icon="spoon" />} active onClick={() => handleClick(result.id)} >See more</IconButton>
+
+                                                
+                                            </ButtonToolbar>
+                                        </Panel>
                                     </Panel>
 
 
@@ -66,8 +87,8 @@ export default function List({ recipes }) {
 
                                         <pre><textarea className="text1"
                                             value={result.description}
-                                        rows={3}
-                                        cols={80}
+                                            rows={3}
+                                            cols={80}
                                         /></pre>
 
                                     </div>
@@ -81,9 +102,9 @@ export default function List({ recipes }) {
                                     <h6>{result.nationality} </h6>
                                     <Divider></Divider>
                                     <h6>
-                                    {(result.difficulty === "hard"? <Icon icon="bolt" />: 
-                                    (result.difficulty === "easy"? <Icon icon="child" /> : <Icon icon="balance-scale" />) )}
-                                    --Level: {result.difficulty}
+                                        {(result.difficulty === "hard" ? <Icon icon="bolt" /> :
+                                            (result.difficulty === "easy" ? <Icon icon="child" /> : <Icon icon="balance-scale" />))}
+                                        --Level: {result.difficulty}
                                     </h6>
 
 

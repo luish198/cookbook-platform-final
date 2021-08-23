@@ -11,6 +11,7 @@ import Login from "./components/Login";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  //const [resid, setResid] = useState('')
 
   useEffect(() => {
     const fetching = async () => {
@@ -43,8 +44,8 @@ function App() {
         <Link to="/login"> <Nav.Item icon={<Icon icon="avatar" />}> Login </Nav.Item></Link>
 
           <Switch>
-            <Route exact path="/recipe">
-              <Recipe recipes={recipes} />
+            <Route exact path="/recipe/:resid">
+              <Recipe recipes={recipes}  />
             </Route>
             <Route exact path="/list">
               <List recipes={recipes} />

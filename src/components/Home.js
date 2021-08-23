@@ -1,5 +1,5 @@
 import React from "react";
-import { Loader, Panel, Divider, Icon, Footer } from "rsuite";
+import { Loader, Panel, Divider, Icon, Footer, ButtonToolbar,IconButton } from "rsuite";
 
 export default function Home({ recipes }) {
   console.log(recipes);
@@ -20,7 +20,7 @@ export default function Home({ recipes }) {
           <div className="rescon-home">
 
             <div className="title">
-              <div className="homeicon" ><Icon icon="calendar" size="3x"  />  </div>
+              <div className="homeicon" ><Icon icon="calendar" size="3x" />  </div>
               <div><h1> The Recipe of the Day ... </h1>  </div>
             </div>
 
@@ -71,10 +71,19 @@ export default function Home({ recipes }) {
             </div>
 
             <div>
-            <Footer><Icon icon="youtube-play" size="2x" />{'  '}<Icon icon="twitter" size="2x" />{'  '}<Icon icon="whatsapp" size="2x" />{'  '}<Icon icon="facebook-official" size="2x" /></Footer>
+              <Footer>
+                <ButtonToolbar>
+                  <IconButton icon={<Icon icon="facebook-official" />} color="blue" circle />{'  '}
+                  <IconButton icon={<Icon icon="google-plus-circle" />} color="red" circle />{'  '}
+                  <IconButton icon={<Icon icon="twitter" />} color="cyan" circle />{'  '}
+                  <IconButton icon={<Icon icon="linkedin" />} color="blue" circle />{'  '}
+                </ButtonToolbar>
+
+                {/* <Icon icon="youtube-play" size="2x" />{'  '}<Icon icon="twitter" size="2x" />{'  '}<Icon icon="whatsapp" size="2x" />{'  '}<Icon icon="facebook-official" size="2x" /> */}
+              </Footer>
             </div>
 
-            
+
 
           </div>
 
