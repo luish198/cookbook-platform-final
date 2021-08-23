@@ -1,5 +1,6 @@
 import React from "react";
-import { Loader, Panel, Divider, Icon, Footer, ButtonToolbar,IconButton } from "rsuite";
+import { Loader, Panel, Divider, Icon, Footer, ButtonToolbar, IconButton } from "rsuite";
+import { useHistory } from "react-router-dom";
 
 export default function Home({ recipes }) {
   console.log(recipes);
@@ -7,6 +8,19 @@ export default function Home({ recipes }) {
   let item = recipes.at(n);
   console.log(item);
   // console.log(item.title)
+
+  const history = useHistory();
+
+
+  const handleClick = (resid)=>{
+
+    console.log(resid)
+    history.push("/recipe/" + resid);
+
+}
+
+
+
 
   return (
     <div className="home">
@@ -66,6 +80,11 @@ export default function Home({ recipes }) {
                   (item.difficulty === "easy" ? <Icon icon="child" /> : <Icon icon="balance-scale" />))}
                 --Level: {item.difficulty}
               </h6>
+              <Divider></Divider>
+              <ButtonToolbar>
+                <IconButton icon={<Icon icon="spoon" />} active onClick={() => handleClick(item.id)} >See more</IconButton>
+              </ButtonToolbar>
+
               <Divider></Divider>
 
             </div>

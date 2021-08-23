@@ -36,9 +36,6 @@ export default function List({ recipes }) {
         console.log(resid)
         history.push("/recipe/" + resid);
 
-        
-
-
     }
 
 
@@ -102,8 +99,8 @@ export default function List({ recipes }) {
                                     <h6>{result.nationality} </h6>
                                     <Divider></Divider>
                                     <h6>
-                                        {(result.difficulty === "hard" ? <Icon icon="bolt" /> :
-                                            (result.difficulty === "easy" ? <Icon icon="child" /> : <Icon icon="balance-scale" />))}
+                                        {(result.difficulty === "hard" ? <Icon icon="bolt" size="2x" /> :
+                                            (result.difficulty === "easy" ? <Icon icon="child" size="2x" /> : <Icon icon="balance-scale" size="2x" />))}
                                         --Level: {result.difficulty}
                                     </h6>
 

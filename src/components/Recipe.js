@@ -1,7 +1,7 @@
 import React from "react";
 import { Loader, Container, FlexboxGrid, Col, Divider, Icon } from "rsuite";
-import "./Home.css";
-import { useState, useEffect, Component } from "react";
+import "./home.css";
+import { useState, useEffect, Component, Footer, ButtonToolbar, IconButton } from "react";
 
 import {
   BrowserRouter as Router,
@@ -41,8 +41,11 @@ export default function Recipe({ recipes }) {
   //console.log(item);
   // console.log(item.title)
 
+
+
   return (
-    <div className="recipe">
+
+    <div className="recipe-onexxx">
       {/* {item = recipes.filter(i => i.)} */}
 
       {isLoading ? (
@@ -50,43 +53,130 @@ export default function Recipe({ recipes }) {
 
           {/* <div className="rescon-homex"> */}
 
-          <div className="title">
-              <div className="homeicon" ><Icon icon="spoon" size="3x" />  </div>
-              <div><h1>{item.title}</h1>  </div>
+          <div className="title-recipe">
+            <div className="homeicon" ><Icon icon="spoon" size="3x" />  </div>
+            <div><h1>{item.title}</h1>  </div>
+          </div>
+
+          {/* <div> */}
+          
+
+
+          <Divider></Divider>
+          <div className="subtitle-recipe" >
+            <div>
+              <h6>{item.cooktime} min</h6>
             </div>
 
-            <Container>
+            <div>
+              <h6>
+                {(item.difficulty === "hard" ? <Icon icon="bolt" size="2x" /> :
+                  (item.difficulty === "easy" ? <Icon icon="child" size="2x" /> : <Icon icon="balance-scale" size="2x" />))}
+                --Level: {item.difficulty}
+              </h6>
+            </div>
+
+            <div>
+              <h6>{item.nationality} min</h6>
+            </div>
+
+
+            
+            {/* <h6>Level: {item.difficulty}</h6> */}
 
 
 
-              <FlexboxGrid justify="space-around" style={{ height: '80vh', padding: 100 }}>
-                <FlexboxGrid.Item componentClass={Col} className='left' colspan={24} md={9}>
-                  {/* <h1>{item.title}</h1> */}
-                  <img src={item.picture} />
+            {/* </div> */}
 
-                </FlexboxGrid.Item>
-                <FlexboxGrid.Item
-                  componentClass={Col}
-                  colspan={24}
-                  md={15}
-                  smHidden
-                >
-                  <h6>{item.description}</h6>
-                  <Divider></Divider>
-                  <h6>{item.method}</h6>
-                  <Divider></Divider>
-                  <h6>{item.cooktime} min</h6>
-                  <Divider></Divider>
-                  <h6>Level: {item.difficulty}</h6>
 
-                </FlexboxGrid.Item>
-              </FlexboxGrid>
-            </Container>
+          </div>
+          <Divider></Divider>
+
+
+
+          <Container className="rescon-recipe">
+
+
+
+            <FlexboxGrid justify="space-around" style={{ height: '100vh', padding: '100px' }}>
+              {/* <FlexboxGrid.Item componentClass={Col} className='left' colspan={24} md={9}> */}
+
+              <FlexboxGrid.Item componentClass={Col} className='left' colspan={24} md={9}>
+                {/* <h1>{item.title}</h1> */}
+                <img src={item.picture} className="img-recipe" />
+
+              </FlexboxGrid.Item>
+
+
+
+
+              <FlexboxGrid.Item
+                componentClass={Col}
+                colspan={24}
+                md={15}
+                smHidden
+              >
+
+                <div className="title-recipe-h3">
+                  <div className="homeicon" ><Icon icon="order-form" size="3x" /></div>
+                  <div><h3>Description</h3></div>
+                </div>
+
+                <pre><textarea className="text-recipe"
+                  value={item.description}
+                  rows={7}
+                //col={100}
+                /></pre>
+                {/* <h6>{item.description}</h6> */}
+                <Divider></Divider>
+
+                <div className="title-recipe-h3">
+                  <div className="homeicon" ><Icon icon="gear2" size="3x" /></div>
+                  <div><h3>Method</h3></div>
+                </div>
+
+                <pre><textarea className="text-recipe"
+                  value={item.method}
+                  rows={7}
+                //cols={100}
+                />
+                </pre>
+                {/* <h6>{item.method}</h6> */}
+                <Divider></Divider>
+
+                <div className="title-recipe-h3">
+                  <div className="homeicon" ><Icon icon="shopping-basket" size="3x" /></div>
+                  <div><h3>Ingredients</h3></div>
+                </div>
+
+                <pre><textarea className="text-recipe"
+                  value={item.Ingredients}
+                  rows={7}
+                //cols={100}
+                />
+                </pre>
+
+
+
+
+
+                <Divider></Divider>
+
+
+              </FlexboxGrid.Item>
+
+
+            </FlexboxGrid>
+
+          </Container>
+
 
           {/* </div> */}
         </>
       ) : (
-        <Loader backdrop content="loading..." vertical />
+
+        <Loader center backdrop size="lg" content="loading..." vertical />
+
       )}
     </div>
   );
