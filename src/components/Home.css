@@ -1,0 +1,11 @@
+.recipe img {
+    height: 400px;
+    width: 550px;
+    margin-top: 100px;
+}
+.sidebar{
+    background-color: bisque;
+    
+    height: 100vh;
+    padding: 20px;
+}
