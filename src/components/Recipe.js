@@ -1,6 +1,6 @@
 import React from "react";
 import { Loader, Container, FlexboxGrid, Col, Divider, Icon } from "rsuite";
-import "./home.css";
+import './home.css';
 import { useState, useEffect, Component, Footer, ButtonToolbar, IconButton } from "react";
 
 import {
